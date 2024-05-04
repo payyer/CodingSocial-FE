@@ -1,16 +1,32 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import LinkPage from "./command/navigate"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LinkPage from "./command/navigate";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {LinkPage.map(link => {
+        {LinkPage.map((link) => {
           return (
             <Route key={link.link} path={link.link} element={link.element} />
-          )
+          );
         })}
       </Routes>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </BrowserRouter>
+
     // <>
     //   <div className="navbar border-b-[1px] border-borderLine w-full">
     //     <div className="flex justify-between w-full">
@@ -41,7 +57,7 @@ function App() {
     //     </div>
     //   </div>
     // </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,4 +1,5 @@
 import SignInForm from "../../Components/Auth/SignIn"
+
 function SignIn() {
     return (
         <div className="hero min-h-screen">
