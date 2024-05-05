@@ -11,7 +11,6 @@ const config: AxiosRequestConfig = {
 
 const client = axios.create({
   baseURL: "http://localhost:8080/v1/api/",
-  withCredentials: true,
 });
 
 export { client, config };

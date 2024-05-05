@@ -4,6 +4,11 @@ interface UserInfo {
   password: string;
 }
 
+interface UserLogin {
+  email: string;
+  password: string;
+}
+
 interface User {
   _id: string;
   name: string;
