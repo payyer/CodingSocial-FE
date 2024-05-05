@@ -4,7 +4,7 @@ import { FaMessage } from "react-icons/fa6";
 function NavBar() {
   return (
     <>
-      <div className="flex justify-between my-3 mx-4 items-center">
+      <div className="flex justify-between my-3 mx-4 items-center h-12">
         {/* Logo */}
         <div className="text-xl">Coding Social</div>
 
@@ -29,12 +29,57 @@ function NavBar() {
 
         {/* Profile and Notifications */}
         <div className="flex gap-2 items-center">
-          <button className="flex justify-center items-center w-10 h-10 bg-secondary rounded-full">
-            <FaMessage />
-          </button>
-          <button className="flex justify-center items-center w-10 h-10 bg-secondary rounded-full">
-            <FaBell />
-          </button>
+          <div className="dropdown dropdown-end">
+            <button
+              tabIndex={0}
+              className="flex relative justify-center items-center w-10 h-10 bg-secondary rounded-full"
+            >
+              <FaMessage />
+              <div className="absolute top-0 right-0">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                </span>
+              </div>
+            </button>
+            <ul
+              tabIndex={0}
+              className="dropdown-content mt-2 z-50 menu p-2 shadow bg-base-100 rounded-box w-52 border border-borderLine"
+            >
+              <li>
+                <a>Item 1</a>
+              </li>
+              <li>
+                <a>Item 2</a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="dropdown dropdown-end">
+            <button
+              tabIndex={0}
+              className="flex relative justify-center items-center w-10 h-10 bg-secondary rounded-full"
+            >
+              <FaBell />
+              <div className="absolute top-0 right-0">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                </span>
+              </div>
+            </button>
+            <ul
+              tabIndex={0}
+              className="dropdown-content mt-2 z-50 menu p-2 shadow bg-base-100 rounded-box w-52 border border-borderLine"
+            >
+              <li>
+                <a>Item 1</a>
+              </li>
+              <li>
+                <a>Item 2</a>
+              </li>
+            </ul>
+          </div>
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="avatar">
               <div className="w-10 rounded-full ">
@@ -55,7 +100,7 @@ function NavBar() {
           </div>
         </div>
       </div>
-      <div className=" border border-secondary"></div>
+      <hr className=" border-t border-secondary"></hr>
     </>
   );
 }
