@@ -1,18 +1,24 @@
 import NavBar from "../../Components/NavBar";
 import RightSideBar from "../../Components/RightSideBar";
 import SideBar from "../../Components/SideBar";
+import AddPostButton from "../../Components/AddPostButton";
+import NewFeeds from "../../Components/NewFeeds";
 
 function Home() {
   return (
-    <>
+    <div className="mb-3">
       <NavBar />
       <div className="flex ">
         <SideBar />
-        <div className="flex-1 px-4 pt-3 bg-secondary">New feed</div>
+        {/* New feed */}
+        <div className="flex flex-col flex-1 gap-4 mx-20 mt-[84px]">
+          <AddPostButton />
 
+          <NewFeeds />
+        </div>
         <RightSideBar />
       </div>
-    </>
+    </div>
   );
 }
 
