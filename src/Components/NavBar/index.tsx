@@ -1,12 +1,15 @@
 import { FaBell, FaSearch } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-[#0e1216]">
       <div className="flex justify-between my-3 mx-4 items-center h-12">
         {/* Logo */}
-        <div className="text-xl text-primary font-bold">Coding Social</div>
+        <div className="text-xl text-primary font-bold cursor-pointer">
+          Coding Social
+        </div>
 
         {/* Input serach */}
         <div className=" w-[420px]">
@@ -29,6 +32,7 @@ function NavBar() {
 
         {/* Profile and Notifications */}
         <div className="flex gap-2 items-center">
+          {/* Message */}
           <div className="dropdown dropdown-end">
             <button
               tabIndex={0}
@@ -76,6 +80,7 @@ function NavBar() {
                   </div>
                 </div>
               </li>
+
               <li>
                 <div className="flex gap-2">
                   <div className="avatar">
@@ -92,6 +97,7 @@ function NavBar() {
             </ul>
           </div>
 
+          {/* Notifications */}
           <div className="dropdown dropdown-end">
             <button
               tabIndex={0}
@@ -218,6 +224,8 @@ function NavBar() {
               </li>
             </ul>
           </div>
+
+          {/* Profile */}
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="avatar">
               <div className="w-10 rounded-full ">
@@ -226,13 +234,13 @@ function NavBar() {
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-secondary rounded-box w-32"
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 border border-borderLine rounded-box w-48 mt-1 font-bold"
             >
               <li>
-                <a>Profile</a>
+                <a>Thông tin cá nhân</a>
               </li>
               <li>
-                <a>Log out</a>
+                <a>Đăng xuất</a>
               </li>
             </ul>
           </div>
