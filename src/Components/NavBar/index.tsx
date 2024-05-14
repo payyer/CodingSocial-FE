@@ -1,13 +1,20 @@
 import { FaBell, FaSearch } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
+  const navigate = useNavigate();
+  const gotoHome = () => {
+    navigate("/");
+  };
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-[#0e1216]">
       <div className="flex justify-between my-3 mx-4 items-center h-12">
         {/* Logo */}
-        <div className="text-xl text-primary font-bold cursor-pointer">
+        <div
+          onClick={gotoHome}
+          className="text-xl text-primary font-bold cursor-pointer"
+        >
           Coding Social
         </div>
 

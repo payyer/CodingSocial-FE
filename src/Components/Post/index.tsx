@@ -4,9 +4,9 @@ import { ImFire } from "react-icons/im";
 import { IoEarth } from "react-icons/io5";
 import { SlOptions } from "react-icons/sl";
 
-function NewFeeds() {
+function Post() {
   return (
-    <div className=" w-full rounded-lg bg-[#2b2d30] px-4 py-2 my-4">
+    <>
       {/* Header */}
       <div className="flex justify-between">
         <div className="flex items-center gap-2">
@@ -55,10 +55,9 @@ function NewFeeds() {
           <span className="text-blue-500 ml-1">Xem thêm</span>
         </div>
 
-        {/* Image context */}
-        <div className="mt-3 flex justify-between w-full">
+        {/* Image */}
+        <div className="mt-3">
           <img
-            className="w-full h-full"
             src="https://kenh14cdn.com/thumb_w/660/203336854389633024/2024/1/16/4197094479394162008815151451627877601360247n-1705392737074707191.jpeg"
             alt="Jennie"
           />
@@ -89,7 +88,7 @@ function NewFeeds() {
         </div>
         <div className="flex items-center group justify-center font-medium hover:bg-secondary rounded-xl">
           <button className="flex justify-center group-hover:text-2xl items-center w-10 h-10 rounded-full">
-            <FaCommentDots className=" text-green-500" />
+            <FaCommentDots className=" text-primary" />
           </button>
           <div className="cursor-pointer">Bình luận</div>
         </div>
@@ -102,8 +101,8 @@ function NewFeeds() {
       </div>
 
       {/* Comment Box */}
-    </div>
+    </>
   );
 }
 
-export default NewFeeds;
+export default Post;

@@ -1,13 +1,24 @@
 import { FaUserFriends } from "react-icons/fa";
 import { FcBriefcase } from "react-icons/fc";
 import { TiGroup } from "react-icons/ti";
+import { useNavigate } from "react-router-dom";
 
 function SideBar() {
+  const navigate = useNavigate();
+
+  const gotoPersonal = () => {
+    navigate("/personal");
+  };
+
   return (
     <div className="relative w-[220px]  border-r border-secondary mx-3 pt-[84px]">
       <div className="absolute top-[80] left-0">
         <div className="fixed w-[220px] flex flex-col gap-3 ">
-          <button className="h-10 hover:opacity-80 hover:bg-secondary rounded-xl mr-2">
+          {/* Go to profile user */}
+          <button
+            onClick={gotoPersonal}
+            className="h-10 hover:opacity-80 hover:bg-secondary rounded-xl mr-2"
+          >
             <div className="flex items-center gap-2">
               <div className="w-8 rounded-full">
                 <img
@@ -19,6 +30,7 @@ function SideBar() {
             </div>
           </button>
 
+          {/* Friend list */}
           <button className="h-10 mr-2 hover:opacity-80 hover:bg-secondary rounded-xl">
             <div className="flex items-center gap-2">
               <div className="w-8 rounded-full text-primary">
@@ -28,6 +40,7 @@ function SideBar() {
             </div>
           </button>
 
+          {/* Groups */}
           <button className="h-10 mr-2 hover:opacity-80 hover:bg-secondary rounded-xl">
             <div className="flex items-center gap-2">
               <div className="w-8 rounded-full text-primary">
@@ -37,6 +50,7 @@ function SideBar() {
             </div>
           </button>
 
+          {/* Recruit */}
           <button className="h-10 mr-2 hover:opacity-80 hover:bg-secondary rounded-xl">
             <div className="flex items-center gap-2">
               <div className="w-8 rounded-full text-primary">
