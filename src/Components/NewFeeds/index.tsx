@@ -227,15 +227,14 @@ function NewFeeds() {
               </div>
             </div>
           </div>
+          <div className="flex justify-between">
+            <div className="font-medium hover:underline cursor-pointer">
+              Xem thêm bình luận
+            </div>
+            <div>10/20</div>
+          </div>
         </>
       )}
-
-      <div className="flex justify-between">
-        <div className="font-medium hover:underline cursor-pointer">
-          Xem thêm bình luận
-        </div>
-        <div>10/20</div>
-      </div>
     </div>
   );
 }
