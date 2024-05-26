@@ -6,17 +6,19 @@ import NewFeeds from "../../Components/NewFeeds";
 
 function Home() {
   return (
-    <div className="mb-3">
-      <NavBar />
-      <div className="flex ">
-        <SideBar />
-        {/* New feed */}
-        <div className="flex flex-col flex-1 gap-4 mx-20 mt-[84px]">
-          <AddPostButton />
+    <div>
+      <div className="mb-3">
+        <NavBar />
+        <div className="flex ">
+          <SideBar />
+          {/* New feed */}
+          <div className="flex flex-col flex-1 gap-4 mx-20 mt-[84px]">
+            <AddPostButton />
 
-          <NewFeeds />
+            <NewFeeds />
+          </div>
+          <RightSideBar />
         </div>
-        <RightSideBar />
       </div>
     </div>
   );

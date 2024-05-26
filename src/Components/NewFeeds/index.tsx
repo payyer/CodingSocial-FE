@@ -23,7 +23,7 @@ function NewFeeds() {
   };
 
   return (
-    <div className=" w-full rounded-lg bg-[#2b2d30] p-4 my-4">
+    <div className=" w-full rounded-lg bg-[#2b2d30] p-4">
       {/* Header */}
       <div className="flex justify-between">
         <div className="flex items-center gap-2">
@@ -57,18 +57,6 @@ function NewFeeds() {
         <div className="mt-1 text-balance line-clamp-3 ">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi
           eligendi blanditiis aspernatur culpa nihil numquam sed repellendus
-          voluptatum sint molestiae veniam in id exercitationem, corporis vel
-          quos necessitatibus. Nobis, sequi! Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Excepturi eligendi blanditiis aspernatur
-          culpa nihil numquam sed repellendus voluptatum sint molestiae veniam
-          in id exercitationem, corporis vel quos necessitatibus. Nobis, sequi!
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi
-          eligendi blanditiis aspernatur culpa nihil numquam sed repellendus
-          voluptatum sint molestiae veniam in id exercitationem, corporis vel
-          quos necessitatibus. Nobis, sequi! Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Excepturi eligendi blanditiis aspernatur
-          culpa nihil numquam sed repellendus voluptatum sint molestiae veniam
-          in id exercitationem, corporis vel quos necessitatibus. Nobis, sequi!
           <span className="text-blue-500 ml-1">Xem thêm</span>
         </div>
 

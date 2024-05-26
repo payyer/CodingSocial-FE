@@ -54,12 +54,6 @@ function AddPostButton() {
                 <option>Cá nhân</option>
               </select>
             </div>
-            <form method="dialog" className=" flex">
-              {/* if there is a button, it will close the modal */}
-              <button className="self-start bg-lightBg py-2 px-4  rounded-lg hover:bg-secondary">
-                Close
-              </button>
-            </form>
           </div>
 
           <form className="mt-4 ">
@@ -93,10 +87,18 @@ function AddPostButton() {
             </div>
 
             {/* Submit button */}
-            <button className="bg-lightBg py-2 px-4 w-full font-medium flex justify-center items-center gap-2 rounded-lg hover:bg-secondary">
-              {/* <span className="loading loading-spinner"></span> */}
-              Đăng bài
-            </button>
+            <div className="flex font-medium justify-end gap-2">
+              <button className="bg-lightBg py-2 px-4 flex justify-center items-center rounded-lg hover:bg-primary hover:text-black">
+                {/* <span className="loading loading-spinner"></span> */}
+                Đăng bài
+              </button>
+              <form method="dialog" className=" flex">
+                {/* if there is a button, it will close the modal */}
+                <button className="self-start bg-lightBg py-2 px-4  rounded-lg hover:bg-primary hover:text-black">
+                  Hủy
+                </button>
+              </form>
+            </div>
           </form>
         </div>
       </dialog>

@@ -11,7 +11,7 @@ function CustomModal({ child, keyOpenModal, url }: ICustomModal) {
     <>
       <input type="checkbox" id={keyOpenModal} className="modal-toggle" />
       <div className="modal w-full" role="dialog">
-        <div className="modal-box">
+        <div className="modal-box scrollbar-thin scrollbar-thumb-primary scrollbar-track-secondary overflow-y-scroll">
           {child ? (
             <>{child}</>
           ) : (

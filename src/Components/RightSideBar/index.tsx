@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FaMinus, FaSearch } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
-import { HiPaperAirplane } from "react-icons/hi";
 import { HiMiniPaperAirplane } from "react-icons/hi2";
 
 function RightSideBar() {

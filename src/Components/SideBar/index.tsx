@@ -2,12 +2,12 @@ import { FaUserFriends } from "react-icons/fa";
 import { FcBriefcase } from "react-icons/fc";
 import { TiGroup } from "react-icons/ti";
 import { useNavigate } from "react-router-dom";
+import { OptionBar } from "../../Pages/Personal";
 
 function SideBar() {
   const navigate = useNavigate();
-
-  const gotoPersonal = () => {
-    navigate("/personal");
+  const navigateTo = (url: string, optionBar: OptionBar) => {
+    navigate(`${url}?tab=${optionBar}`);
   };
 
   return (
@@ -16,7 +16,7 @@ function SideBar() {
         <div className="fixed w-[220px] flex flex-col gap-3 ">
           {/* Go to profile user */}
           <button
-            onClick={gotoPersonal}
+            onClick={() => navigateTo("/personal", OptionBar.Post)}
             className="h-10 hover:opacity-80 hover:bg-secondary rounded-xl mr-2"
           >
             <div className="flex items-center gap-2">
@@ -31,7 +31,10 @@ function SideBar() {
           </button>
 
           {/* Friend list */}
-          <button className="h-10 mr-2 hover:opacity-80 hover:bg-secondary rounded-xl">
+          <button
+            onClick={() => navigateTo("/personal", OptionBar.Friends)}
+            className="h-10 mr-2 hover:opacity-80 hover:bg-secondary rounded-xl"
+          >
             <div className="flex items-center gap-2">
               <div className="w-8 rounded-full text-primary">
                 <FaUserFriends className="w-full h-wfull" />
@@ -41,7 +44,10 @@ function SideBar() {
           </button>
 
           {/* Groups */}
-          <button className="h-10 mr-2 hover:opacity-80 hover:bg-secondary rounded-xl">
+          <button
+            onClick={() => navigateTo("/personal", OptionBar.History)}
+            className="h-10 mr-2 hover:opacity-80 hover:bg-secondary rounded-xl"
+          >
             <div className="flex items-center gap-2">
               <div className="w-8 rounded-full text-primary">
                 <TiGroup className="w-full h-wfull" />
@@ -51,7 +57,10 @@ function SideBar() {
           </button>
 
           {/* Recruit */}
-          <button className="h-10 mr-2 hover:opacity-80 hover:bg-secondary rounded-xl">
+          <button
+            onClick={() => navigateTo("/personal", OptionBar.History)}
+            className="h-10 mr-2 hover:opacity-80 hover:bg-secondary rounded-xl"
+          >
             <div className="flex items-center gap-2">
               <div className="w-8 rounded-full text-primary">
                 <FcBriefcase className="w-full h-wfull" />

@@ -1,10 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import HeaderTitle from "./HeaderTitle";
 import ThirdParty from "./ThirdParty";
-import { useState } from "react";
-import { login } from "../../api/auth.api";
-import { toast } from "react-toastify";
 import Cookies from "js-cookie";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { ILogin } from "../../types/access";
+import { useLoginMutation } from "../../reduceSlice/acess.server";
+import {
+  setCookieWithExpiryDays,
+  setCookieWithExpiryMinute,
+} from "../../util/cookie";
 
 function SignInForm() {
   const navigate = useNavigate();
@@ -13,38 +17,38 @@ function SignInForm() {
     return navigate("/sign-up");
   };
 
-  const goToHomePage = () => {
-    return navigate("/");
-  };
+  const [login] = useLoginMutation();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  // Hàm xử lý sự kiện khi người dùng thay đổi giá trị của trường nhập liệu "Email"
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
-
-  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const userInput = { email, password };
-    login(userInput)
-      .then((respone) => {
-        console.log(respone.metadata);
-        // set userId
-        Cookies.set("userId", respone.metadata.user._id);
-        Cookies.set("userRole", respone.metadata.user.user_roles);
-        toast(respone.message);
-        goToHomePage();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILogin>();
+  const onSubmit: SubmitHandler<ILogin> = (data) => {
+    login(data)
+      .then((res) => {
+        if (res.data?.status === 200) {
+          console.log(res);
+          const tokens = res.data?.metadata.tokens;
+          const metadata = res.data?.metadata;
+          if (metadata) {
+            localStorage.setItem("userId", metadata.user._id);
+            localStorage.setItem("userName", metadata.user.user_name);
+          }
+          if (tokens) {
+            setCookieWithExpiryMinute("accessToken", tokens.accessToken, 1);
+            setCookieWithExpiryDays("refreshToken", tokens.refreshToken, 2);
+            navigate("/");
+          }
+        } else {
+          console.log(res.error);
+        }
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
   return (
     <div className="card shrink-0 w-full max-w-sm shadow-2xl text-white">
       <HeaderTitle title="Let try now!!" />
@@ -54,18 +58,16 @@ function SignInForm() {
       <div className="divider -mt-1">or</div>
 
       {/* Login local*/}
-      <form onSubmit={handleLogin} className="card-body -mt-12">
+      <form onSubmit={handleSubmit(onSubmit)} className="card-body -mt-12">
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
           <input
+            {...register("email", { required: "This is required." })}
             type="email"
             placeholder="examp@gmail.com"
             className="input focus:outline-none focus:border-1 focus:border-borderLine bg-lightBg"
-            required
-            value={email}
-            onChange={handleEmailChange}
           />
         </div>
         <div className="form-control">
@@ -73,12 +75,11 @@ function SignInForm() {
             <span className="label-text">Password</span>
           </label>
           <input
+            {...register("password", { required: "This is required." })}
             type="password"
             placeholder="Your password"
             className="input focus:outline-none focus:border-1 focus:border-borderLine bg-lightBg"
             required
-            value={password}
-            onChange={handlePasswordChange}
           />
           <label className="label flex mt-2">
             <a
