@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import HeaderTitle from "./HeaderTitle";
 import ThirdParty from "./ThirdParty";
-import Cookies from "js-cookie";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ILogin } from "../../types/access";
 import { useLoginMutation } from "../../reduceSlice/acess.server";
 import {
   setCookieWithExpiryDays,
-  setCookieWithExpiryMinute,
+  setCookieWithExpiryHour,
 } from "../../util/cookie";
 
 function SignInForm() {
@@ -36,7 +35,7 @@ function SignInForm() {
             localStorage.setItem("userName", metadata.user.user_name);
           }
           if (tokens) {
-            setCookieWithExpiryMinute("accessToken", tokens.accessToken, 1);
+            setCookieWithExpiryHour("accessToken", tokens.accessToken, 1);
             setCookieWithExpiryDays("refreshToken", tokens.refreshToken, 2);
             navigate("/");
           }

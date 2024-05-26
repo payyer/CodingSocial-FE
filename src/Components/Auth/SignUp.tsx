@@ -6,7 +6,7 @@ import { ISignUpInput } from "../../types/access";
 import { useSignUpMutation } from "../../reduceSlice/acess.server";
 import {
   setCookieWithExpiryDays,
-  setCookieWithExpiryMinute,
+  setCookieWithExpiryHour,
 } from "../../util/cookie";
 
 function SignUpForm() {
@@ -39,7 +39,7 @@ function SignUpForm() {
         localStorage.setItem("userName", metadata.user.user_name);
       }
       if (tokens) {
-        setCookieWithExpiryMinute("accessToken", tokens.accessToken, 1);
+        setCookieWithExpiryHour("accessToken", tokens.accessToken, 1);
         setCookieWithExpiryDays("refreshToken", tokens.refreshToken, 2);
         navigate("/");
       }

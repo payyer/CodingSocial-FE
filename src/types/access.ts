@@ -41,3 +41,17 @@ export interface ILogin {
   email: string;
   password: string;
 }
+
+export interface ILogout {
+  accessToken: string;
+  userId: string;
+}
+
+export interface ILogOutRespone {
+  message: string;
+  status: number;
+  metadata: {
+    acknowledged: boolean;
+    deletedCount: number;
+  };
+}

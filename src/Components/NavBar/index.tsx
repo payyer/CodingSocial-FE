@@ -1,18 +1,34 @@
 import { FaBell, FaSearch } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useLogoutMutation } from "../../reduceSlice/acess.server";
 
-function NavBar() {
+const NavBar = () => {
   const navigate = useNavigate();
-  const gotoHome = () => {
-    navigate("/");
+  const [logout] = useLogoutMutation();
+
+  const handleLogout = () => {
+    const userId = localStorage.getItem("userId");
+    const accessToken = Cookies.get("accessToken");
+    if (accessToken && userId) {
+      logout({ accessToken, userId }).then((res) => {
+        if (res.data?.status === 200) {
+          localStorage.removeItem("userId");
+          localStorage.removeItem("userName");
+          Cookies.remove("accessToken");
+          Cookies.remove("refreshToken");
+          navigate("/sign-in");
+        }
+      });
+    }
   };
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-[#0e1216]">
       <div className="flex justify-between my-3 mx-4 items-center h-12">
         {/* Logo */}
         <div
-          onClick={gotoHome}
+          onClick={() => navigate("/")}
           className="text-xl text-primary font-bold cursor-pointer"
         >
           Coding Social
@@ -246,7 +262,7 @@ function NavBar() {
               <li>
                 <a>Thông tin cá nhân</a>
               </li>
-              <li>
+              <li onClick={() => handleLogout()}>
                 <a>Đăng xuất</a>
               </li>
             </ul>
@@ -256,6 +272,6 @@ function NavBar() {
       <hr className=" border-t border-secondary"></hr>
     </div>
   );
-}
+};
 
 export default NavBar;
